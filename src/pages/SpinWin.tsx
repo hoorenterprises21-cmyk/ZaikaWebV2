@@ -3,14 +3,14 @@ import { api } from '../lib/api';
 import { useAuth } from '../lib/auth';
 import { SpinWinReward } from '../types';
 import { useToast } from '../components/Toast';
-import { RefreshCw, Star, Wallet, Gift, Truck, Trophy } from 'lucide-react';
+import { Video as LucideIcon, RefreshCw, Star, Wallet, Gift, Truck, Trophy } from 'lucide-react';
 
 const COLORS = [
   '#F59E0B', '#EF4444', '#10B981', '#3B82F6',
   '#8B5CF6', '#F97316', '#EC4899', '#06B6D4',
 ];
 
-const REWARD_ICONS: Record<string, React.FC<{ size: number }>> = {
+const REWARD_ICONS: Record<string, LucideIcon> = {
   points: Star,
   wallet: Wallet,
   coupon: Gift,

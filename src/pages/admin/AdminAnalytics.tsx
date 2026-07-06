@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { adminApi } from '../../lib/api';
 import AdminLayout from './AdminLayout';
 import { money } from '../../lib/settings';
-import { TrendingUp, ShoppingCart, Users, Package, IndianRupee } from 'lucide-react';
+import { Video as LucideIcon, TrendingUp, ShoppingCart, Users, Package, IndianRupee } from 'lucide-react';
 
 type ChartType = 'revenue' | 'orders' | 'customers' | 'products' | 'profit';
 type Range = '7d' | '30d' | '90d' | '1y' | 'custom';
 
 interface AnalyticsData { labels: string[]; data: number[]; chart: ChartType; range: Range; start_date: string; end_date: string; }
 
-const CHARTS: { value: ChartType; label: string; Icon: React.FC<{size:number}> }[] = [
+const CHARTS: { value: ChartType; label: string; Icon: LucideIcon }[] = [
   { value: 'revenue', label: 'Revenue', Icon: IndianRupee },
   { value: 'profit', label: 'Profit', Icon: TrendingUp },
   { value: 'orders', label: 'Orders', Icon: ShoppingCart },

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { adminApi } from '../../lib/api';
 import AdminLayout from './AdminLayout';
 import { money } from '../../lib/settings';
+import { Video as LucideIcon } from 'lucide-react';
 import { TrendingUp, ShoppingCart, Package, IndianRupee, Download } from 'lucide-react';
 
 type ReportType = 'revenue' | 'orders' | 'products' | 'profit';
@@ -41,12 +42,12 @@ export default function AdminReports() {
       a.href = blobUrl;
       a.click();
       URL.revokeObjectURL(blobUrl);
-    }).catch(() => { toast && (window.location.href = url); });
+    }).catch(() => { window.location.href = url; });
   };
 
   const maxVal = Math.max(...data.map(r => Number(r.total ?? r.revenue ?? r.units_sold ?? 0)), 1);
 
-  const TYPES: { value: ReportType; label: string; Icon: React.FC<{size: number}> }[] = [
+  const TYPES: { value: ReportType; label: string; Icon: LucideIcon }[] = [
     { value: 'revenue', label: 'Revenue', Icon: IndianRupee },
     { value: 'orders', label: 'Orders', Icon: ShoppingCart },
     { value: 'profit', label: 'Profit', Icon: TrendingUp },

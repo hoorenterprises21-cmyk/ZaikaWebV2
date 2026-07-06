@@ -35,22 +35,22 @@ export default function AdminInventory() {
     try {
       if (editing) {
         await adminApi.patch('/inventory.php', { ...form, id: editing });
-        toast.success('Item updated');
+        toast('Item updated', 'success');
       } else {
         await adminApi.post('/inventory.php', form);
-        toast.success('Item added');
+        toast('Item added', 'success');
       }
       setShowForm(false); setEditing(null); setForm(blank()); load();
-    } catch { toast.error('Failed to save'); }
+    } catch { toast('Failed to save', 'error'); }
   };
 
   const submitTxn = async () => {
     if (!txnItemId || !txnQty) return;
     try {
       await adminApi.post('/inventory.php', { resource: 'transaction', item_id: txnItemId, type: txnType, quantity: parseFloat(txnQty), notes: txnNotes });
-      toast.success('Stock updated');
+      toast('Stock updated', 'success');
       setTxnItemId(null); setTxnQty(''); setTxnNotes(''); load();
-    } catch { toast.error('Failed'); }
+    } catch { toast('Failed', 'error'); }
   };
 
   const isLow = (item: InventoryItem) => Number(item.current_stock) <= Number(item.min_stock_level) && Number(item.min_stock_level) > 0;

@@ -63,7 +63,7 @@ export default function AdminDeliveryAreas() {
       delivery_charge: String(zone.delivery_charge ?? 0),
       min_order_value: String(zone.min_order_value ?? 0),
       estimated_minutes: String(zone.estimated_minutes ?? 30),
-      is_active: zone.is_active,
+      is_active: Number(zone.is_active),
     });
     setShowForm(true);
   };
@@ -135,8 +135,8 @@ export default function AdminDeliveryAreas() {
                   <div className="text-lg font-semibold text-neutral-900">{zone.name}</div>
                   <div className="mt-1 text-sm text-neutral-500">Pincode {zone.pincode}</div>
                 </div>
-                <span className={`chip ${zone.is_active ? 'bg-green-500 text-white' : 'bg-neutral-700 text-white'}`}>
-                  {zone.is_active ? 'Active' : 'Inactive'}
+                <span className={`chip ${Number(zone.is_active) ? 'bg-green-500 text-white' : 'bg-neutral-700 text-white'}`}>
+                  {Number(zone.is_active) ? 'Active' : 'Inactive'}
                 </span>
               </div>
 

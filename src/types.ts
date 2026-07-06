@@ -153,11 +153,12 @@ export interface Review {
 export interface DeliveryZone {
   id: number;
   name: string;
+  area_name?: string;
   pincode: string;
   delivery_charge: number | string;
   min_order_value: number | string;
   estimated_minutes: number;
-  is_active: number;
+  is_active: number | string;
 }
 
 export interface Coupon {
@@ -236,6 +237,11 @@ export interface DashboardStats {
   total_customers: number;
   active_products: number;
   pending_reviews: number;
+  // V3 fields
+  total_employees?: number;
+  low_inventory?: number;
+  pending_leaves?: number;
+  wallet_liability?: number;
 }
 
 export interface DashboardData {

@@ -51,7 +51,7 @@ export default function Checkout() {
       if (enabled.length) setPayment(enabled[0].key);
     });
     api.get('/delivery.php?resource=zones').then(({ data }) => {
-      const zones = (data.zones ?? []).filter((z: DeliveryZone) => z.is_active === 1 || z.is_active === '1');
+      const zones = (data.zones ?? []).filter((z: DeliveryZone) => Number(z.is_active) === 1);
       setDeliveryZones(zones);
       if (zones.length) {
         const firstZone = zones[0];
@@ -289,7 +289,7 @@ export default function Checkout() {
                     }}
                   >
                     {deliveryZones.map((z) => (
-                      <option key={z.id} value={z.id}>{z.area_name} – {z.pincode}</option>
+                      <option key={z.id} value={z.id}>{z.area_name ?? z.name} – {z.pincode}</option>
                     ))}
                   </select>
                 </div>

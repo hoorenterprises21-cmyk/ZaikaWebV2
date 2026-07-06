@@ -42,12 +42,12 @@ export default function AdminDashboard() {
       </div>
 
       {/* V3 row */}
-      {(stats.total_employees > 0 || stats.low_inventory > 0 || stats.pending_leaves > 0 || stats.wallet_liability > 0) && (
+      {((stats.total_employees ?? 0) > 0 || (stats.low_inventory ?? 0) > 0 || (stats.pending_leaves ?? 0) > 0 || (stats.wallet_liability ?? 0) > 0) && (
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.total_employees > 0 && <StatCard Icon={Users} label="Staff" value={String(stats.total_employees)} tone="blue" small />}
-          {stats.low_inventory > 0 && <StatCard Icon={Package} label="Low Inventory" value={String(stats.low_inventory)} tone="red" small />}
-          {stats.pending_leaves > 0 && <StatCard Icon={Clock} label="Leave Requests" value={String(stats.pending_leaves)} tone="amber" small />}
-          {stats.wallet_liability > 0 && <StatCard Icon={IndianRupee} label="Wallet Liability" value={money(stats.wallet_liability)} tone="green" small />}
+          {(stats.total_employees ?? 0) > 0 && <StatCard Icon={Users} label="Staff" value={String(stats.total_employees)} tone="blue" small />}
+          {(stats.low_inventory ?? 0) > 0 && <StatCard Icon={Package} label="Low Inventory" value={String(stats.low_inventory)} tone="red" small />}
+          {(stats.pending_leaves ?? 0) > 0 && <StatCard Icon={Clock} label="Leave Requests" value={String(stats.pending_leaves)} tone="amber" small />}
+          {(stats.wallet_liability ?? 0) > 0 && <StatCard Icon={IndianRupee} label="Wallet Liability" value={money(stats.wallet_liability ?? 0)} tone="green" small />}
         </div>
       )}
 
